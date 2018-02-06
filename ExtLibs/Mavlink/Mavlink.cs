@@ -209,6 +209,7 @@ public partial class MAVLink
 		new message_info(232, "GPS_INPUT", 151, 63, 63, typeof( mavlink_gps_input_t )),
 		new message_info(233, "GPS_RTCM_DATA", 35, 182, 182, typeof( mavlink_gps_rtcm_data_t )),
 		new message_info(234, "HIGH_LATENCY", 150, 40, 40, typeof( mavlink_high_latency_t )),
+		new message_info(236, "AGROFLY_DATA", 207, 4, 4, typeof( mavlink_agrofly_data_t )),
 		new message_info(241, "VIBRATION", 90, 32, 32, typeof( mavlink_vibration_t )),
 		new message_info(242, "HOME_POSITION", 104, 52, 60, typeof( mavlink_home_position_t )),
 		new message_info(243, "SET_HOME_POSITION", 85, 53, 61, typeof( mavlink_set_home_position_t )),
@@ -464,6 +465,7 @@ WIND_COV = 231,
 GPS_INPUT = 232,
 GPS_RTCM_DATA = 233,
 HIGH_LATENCY = 234,
+AGROFLY_DATA = 236,
 VIBRATION = 241,
 HOME_POSITION = 242,
 SET_HOME_POSITION = 243,
@@ -7004,6 +7006,16 @@ ICAROUS_KINEMATIC_BANDS = 42001,
         public  byte failsafe;
             /// <summary> current waypoint number </summary>
         public  byte wp_num;
+    
+    };
+
+
+    [StructLayout(LayoutKind.Sequential,Pack=1,Size=4)]
+    ///<summary> AgroFly ground filtering and new features in future </summary>
+    public struct mavlink_agrofly_data_t
+    {
+        /// <summary> Current vehicle height above ground created by the ground filter </summary>
+        public  float current_height;
     
     };
 
