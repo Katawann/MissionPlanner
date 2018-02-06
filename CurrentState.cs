@@ -1289,6 +1289,9 @@ namespace MissionPlanner
 
         public float speedup { get; set; }
 
+        // Agrofly data to display in real time (one variable = one data)
+        public float agrf_ground { get; set; }
+
         // HIL
         public int hilch1;// { get; set; }
         public int hilch2;// { get; set; }
@@ -2533,6 +2536,15 @@ namespace MissionPlanner
 
                         AOA = aoa_ssa.AOA;
                         SSA = aoa_ssa.SSA;
+                    }
+
+                    // Agrofly data. Add here additionnals data to display in real time (need to be defined in common.xml and regenerated first)
+                    mavLinkMessage = MAV.getPacket((uint)MAVLink.MAVLINK_MSG_ID.AGROFLY_DATA);
+                    if (mavLinkMessage != null)
+                    {
+                        var agrofly = mavLinkMessage.ToStructure<MAVLink.mavlink_agrofly_data_t>();
+
+                        agrf_ground = agrofly.current_height;
                     }
                 }
 
