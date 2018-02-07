@@ -1,6 +1,48 @@
 <?xml version="1.0"?>
 <Params>
   <ArduCopter2>
+    <AGRF_ENABLE>
+      <DisplayName>Ground filter real time enable/disable</DisplayName>
+      <Description>Enabled/disable the algorithm to separate ground from non ground point from laser facing downwards</Description>
+	  <Values>0:None,1:AgroFly filter</Values>
+	  <Bitmask>0:AgroFlyFilter</Bitmask>
+      <User>Standard</User>
+    </AGRF_ENABLE>
+	<AGRF_ELEVATION>
+      <DisplayName>Ratio of the object height</DisplayName>
+      <Description>Elevation has to be lower than this ratio of the height of the object to validate the end of the plant</Description>
+	  <Units>Percent</Units>
+	  <Range>0 100</Range>
+      <User>Standard</User>
+    </AGRF_ELEVATION>
+	<AGRF_SLOPE>
+      <DisplayName>Slope maximum</DisplayName>
+      <Description>Threshold to separate ground from non ground point</Description>
+	  <Units>Percent</Units>
+	  <Range>0 100</Range>
+      <User>Standard</User>
+    </AGRF_SLOPE>
+	<AGRF_ALT_MIN>
+      <DisplayName>Object height minimum</DisplayName>
+      <Description>Under this value, peaks detected are not considered as objects and will be validate as the ground. 0: disabled</Description>
+	  <Units>Meters</Units>
+	  <Range>0 10</Range>
+      <User>Standard</User>
+    </AGRF_ALT_MIN>
+	<AGRF_ALT_MAX>
+      <DisplayName>Object height maximum</DisplayName>
+      <Description>Above this value, peaks is not deleted by the algorithm and drone will follow it like the ground (may implies consequent bounce). 0: disabled</Description>
+	  <Units>Meters</Units>
+	  <Range>0 20</Range>
+      <User>Standard</User>
+    </AGRF_ALT_MAX>
+	<AGRF_ROW_W>
+      <DisplayName>Maximum row width</DisplayName>
+      <Description>Not considered as an object if larger than this value. Only used in mapping mode (perpendicular of the rows). 0: disabled</Description>
+	  <Units>Meters</Units>
+	  <Range>0 10</Range>
+      <User>Standard</User>
+    </AGRF_ROW_W>
     <SYSID_SW_MREV>
       <DisplayName>Eeprom format version number</DisplayName>
       <Description>This value is incremented when changes are made to the eeprom format</Description>
